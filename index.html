@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b2440"><link rel="manifest" href="manifest.json">
+<title>Fart Collection | Order Tracking Demo</title>
+<style>
+:root{--navy:#0b2440;--blue:#2364aa;--paper:#f5f8fb;--ink:#16283b;--muted:#64758a;--line:#dce5ee;--white:#fff;--cyan:#dff4f7}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:var(--navy);color:white;padding:14px 5vw;display:flex;align-items:center;justify-content:space-between;gap:14px;position:sticky;top:0;z-index:5}
+.brand{font-weight:850;letter-spacing:.08em}.brand small{display:block;font-weight:500;letter-spacing:.16em;color:#b9d9e8;font-size:.65rem;margin-top:3px}
+nav{display:flex;gap:15px;align-items:center}nav a{color:#eaf4ff;text-decoration:none;font-size:.9rem}
+button,.button{border:0;border-radius:11px;padding:11px 15px;background:var(--blue);color:white;font-weight:750;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+button.secondary,.button.secondary{background:white;color:var(--navy);border:1px solid var(--line)}
+.hero{padding:48px 5vw;background:linear-gradient(125deg,#e8f7fa,#f6f9fc 55%,#dfeaf7);display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:850}
+h1{font-size:clamp(2.4rem,5vw,4.3rem);line-height:1.03;letter-spacing:-.05em;margin:12px 0 18px;color:var(--navy)}
+.lead{font-size:1.05rem;line-height:1.65;max-width:640px;color:#42556a}
+.stage{min-height:280px;border:1px solid #d4e4ef;border-radius:25px;background:linear-gradient(145deg,#fff,#eaf4fa);display:flex;align-items:center;justify-content:center;position:relative}
+.bottle{width:135px;height:220px;position:relative;border:3px solid #a7c7d7;border-radius:23px 23px 18px 18px;background:linear-gradient(90deg,#ffffffd9,#dff5fa80 35%,#ffffffb5 65%,#cbe4ef80);box-shadow:15px 20px 30px #13334a1a}
+.bottle:before{content:"";position:absolute;top:-27px;left:39px;width:52px;height:30px;border:3px solid #a7c7d7;border-bottom:0;border-radius:8px 8px 0 0;background:#eefaff}
+.cap{position:absolute;top:-36px;left:35px;width:62px;height:12px;background:#163e63;border-radius:4px}
+.label{position:absolute;left:8px;right:8px;top:68px;background:white;border:1px solid #cbdde8;padding:12px 4px;text-align:center}
+.label b{display:block;font-size:10px;letter-spacing:.08em;color:#153a5a}.label span{display:block;font-size:8px;letter-spacing:.12em;margin-top:8px;color:#627d90}
+section{padding:45px 5vw}.head{margin-bottom:22px}h2{color:var(--navy);font-size:clamp(1.7rem,3vw,2.3rem);margin:5px 0 8px}.muted{color:var(--muted);line-height:1.6;margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:white;border:1px solid var(--line);border-radius:17px;padding:21px}
+.icon{width:48px;height:48px;border-radius:14px;background:var(--cyan);display:grid;place-items:center;font-size:1.4rem;margin-bottom:15px}
+.card h3{margin:0 0 8px;color:var(--navy)}.card p{color:var(--muted);line-height:1.55;font-size:.92rem}
+.price-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:17px}.price{font-weight:850;color:var(--navy);font-size:1.15rem}
+.tracker{max-width:760px;background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 8px 28px #102f4b08}
+form{display:flex;gap:10px;margin-top:18px}input{min-width:0;flex:1;border:1px solid #c9d7e4;border-radius:10px;padding:13px;font:inherit}
+.result{display:none;margin-top:22px;padding:18px;border-radius:14px;background:#f2f8fc;border:1px solid #d5e6f1}
+.timeline{display:grid;gap:13px;margin-top:18px}.event{display:flex;gap:12px;align-items:flex-start}.dot{width:13px;height:13px;background:#2e8b70;border-radius:50%;margin-top:4px;box-shadow:0 0 0 4px #d9f0e8}.event.pending .dot{background:#aab7c4;box-shadow:0 0 0 4px #edf1f5}.event b{display:block;color:var(--navy)}.event small{color:var(--muted)}
+.notice{background:#fff8e7;border:1px solid #f0dba4;border-radius:14px;padding:16px 18px;color:#674b14;line-height:1.6;margin-top:20px}
+footer{padding:26px 5vw;background:#07192c;color:#b9cadb;font-size:.84rem;line-height:1.6}
+.cart{position:fixed;right:15px;bottom:15px;background:var(--navy);color:white;padding:14px 16px;border-radius:14px;z-index:9;display:none;max-width:calc(100vw - 30px);box-shadow:0 10px 30px #0b244044}
+@media(max-width:740px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}section{padding:38px 5vw}form{flex-direction:column}nav{gap:9px}nav a{font-size:.8rem}}
+</style></head>
+<body>
+<header><div class="brand">FART COLLECTION<small>SCIENCE-INSPIRED NOVELTY</small></div><nav><a href="#products">Editions</a><a href="#tracking">Track order</a></nav></header>
+<main>
+<section class="hero"><div><div class="eyebrow">A curious collectible concept</div><h1>Small bottle.<br>Big conversation.</h1><p class="lead">A science-inspired novelty brand concept with transparent 250 mL glass-bottle styling, laboratory-style labels and a simple order-tracking demo.</p><a class="button" href="#products">Explore editions ↓</a></div><div class="stage" aria-label="Transparent glass bottle concept"><div class="bottle"><div class="cap"></div><div class="label"><b>FART<br>COLLECTION</b><span>ADULT EDITION<br>250 mL · CONCEPT</span></div></div></div></section>
+<section id="products"><div class="head"><div class="eyebrow">The collection</div><h2>Product concepts</h2><p class="muted">Demo listings only. Prices are placeholders; no purchases are processed.</p></div>
+<div class="grid">
+<article class="card"><div class="icon">🧪</div><h3>Adult Edition</h3><p>Minimal lab-style label and a clear 250 mL bottle concept.</p><div class="price-row"><span class="price">₹399*</span><button onclick="add('Adult Edition',399)">Add to demo cart</button></div></article>
+<article class="card"><div class="icon">🔬</div><h3>Vintage Edition</h3><p>Numbered collector-inspired packaging concept.</p><div class="price-row"><span class="price">₹499*</span><button onclick="add('Vintage Edition',499)">Add to demo cart</button></div></article>
+<article class="card"><div class="icon">⚗️</div><h3>Limited Lab Series</h3><p>Prototype concept pending feasibility and safety review.</p><div class="price-row"><span class="price">₹599*</span><button onclick="add('Limited Lab Series',599)">Add to demo cart</button></div></article>
+</div><p class="muted" style="font-size:.8rem;margin-top:12px">*Illustrative prices only.</p></section>
+<section id="tracking"><div class="head"><div class="eyebrow">Customer tools</div><h2>Track your order</h2><p class="muted">Enter a demo tracking ID to see a sample shipment timeline.</p></div>
+<div class="tracker"><form id="trackForm"><input id="trackingId" aria-label="Tracking ID" placeholder="Enter tracking ID (e.g. FC1001)" required><button type="submit">Track order</button></form><div class="result" id="trackResult" aria-live="polite"></div><p class="muted" style="font-size:.82rem;margin-top:14px">Try FC1001, FC1002 or FC1003. These are fictional examples for preview only.</p></div>
+<div class="notice"><b>Prototype notice:</b> Order tracking is simulated in this version. It is not connected to a courier, database or real orders. No payments are taken. The physical product concept has not been validated for safe collection, storage, transport or six-month odor retention.</div></section>
+</main><footer><b>FART COLLECTION</b><br>Scientific-style novelty concept · 250 mL transparent glass bottle design<br>Website / installable web app prototype. No live sales, payment or courier integration.</footer>
+<div class="cart" id="cart" role="status" aria-live="polite"></div>
+<script>
+let items=[];
+function add(name,price){items.push({name,price});let total=items.reduce((s,i)=>s+i.price,0);let c=document.getElementById('cart');c.style.display='block';c.innerHTML='<b>Demo cart: '+items.length+' item(s)</b><br><span style="color:#d5e9f8">'+items.map(i=>i.name).join(', ')+' · Total ₹'+total+' (no checkout)</span>';}
+const orders={
+ FC1001:{name:'Adult Edition',status:2,steps:[['Order received','Demo order created'],['Packed','Packaging preparation simulated'],['Shipped','Courier handoff simulated'],['Delivered','Delivery not yet marked']]},
+ FC1002:{name:'Vintage Edition',status:1,steps:[['Order received','Demo order created'],['Packed','Packaging preparation simulated'],['Shipped','Awaiting demo shipment'],['Delivered','Delivery not yet marked']]},
+ FC1003:{name:'Limited Lab Series',status:0,steps:[['Order received','Demo order created'],['Packed','Not started'],['Shipped','Not started'],['Delivered','Not started']]}
+};
+document.getElementById('trackForm').addEventListener('submit',e=>{e.preventDefault();let id=document.getElementById('trackingId').value.trim().toUpperCase();let o=orders[id],box=document.getElementById('trackResult');box.style.display='block';if(!o){box.innerHTML='<b>No demo order found.</b><p class="muted">Try FC1001, FC1002 or FC1003. Live order tracking is not connected.</p>';return;}box.innerHTML='<div class="eyebrow">Demo tracking result</div><h3 style="margin:6px 0;color:#0b2440">'+id+' · '+o.name+'</h3><p class="muted">Sample status timeline — fictional data</p><div class="timeline">'+o.steps.map((s,i)=>'<div class="event '+(i>o.status?'pending':'')+'"><div class="dot"></div><div><b>'+s[0]+'</b><small>'+s[1]+'</small></div></div>').join('')+'</div>';});
+</script></body></html>
